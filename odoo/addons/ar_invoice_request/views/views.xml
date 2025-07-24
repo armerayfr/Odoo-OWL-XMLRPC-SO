@@ -1,0 +1,15 @@
+<odoo>
+  <data>
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="inv_request_act">
+      <field name="name">Invoice Request</field>
+      <field name="res_model">invoice.request</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem name="Invoice Request" id="invoice_request_menu" parent="account.menu_finance"
+              action="inv_request_act"/>
+  </data>
+</odoo>

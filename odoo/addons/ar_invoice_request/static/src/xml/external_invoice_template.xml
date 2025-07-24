@@ -1,0 +1,5 @@
+<templates xml:space="preserve">
+  <t t-name="external_invoice_form_template">
+    <p>This is OWL Template</p>
+  </t>
+</templates>

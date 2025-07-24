@@ -1,0 +1,12 @@
+<odoo>
+  <template id="external_template_wrapper" name="External Sale Invoice Page">
+    <t t-call-assets="web.assets_frontend" t-js="true"/>
+    <t t-call="website.layout">
+      <div id="wrap">
+        <div id="external_invoice_mount" t-att-data-token="token">
+          <p>Loading OWL form...</p>
+        </div>
+      </div>
+    </t>
+  </template>
+</odoo>

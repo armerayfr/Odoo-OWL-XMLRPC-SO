@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+  <t t-name="external_invoice_form_template">
+    <div class="p-4 text-center">
+      <h3>🧾 External Invoice Request</h3>
+      <p>Your token: <t t-esc="props.token"/></p>
+      <button class="btn btn-primary mt-3" t-on-click="logMessage">
+        Test Button
+      </button>
+    </div>
+  </t>
+</templates>
