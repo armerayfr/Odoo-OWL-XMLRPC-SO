@@ -26,7 +26,9 @@ class InvoiceRequest(models.Model):
     )
     sale_id = fields.Many2one(
         'sale.order',
-        string="Sale Order Number"
+        string="Sale Order Number",
+        domain="[('state', '=', 'sale'), ('invoice_status', '=', 'to invoice'), ('partner_id', '=', partner_id)]",
+        required=1
     )
     invoice_id = fields.Many2one(
         'account.move',
@@ -36,7 +38,25 @@ class InvoiceRequest(models.Model):
         [
             ('pending', 'Pending'),
             ('approved', 'Approved')
-        ]
+        ],
+        default='pending'
     )
+
+    def approval_request(self):
+        adv_payment_inv = self.env['sale.advance.payment.inv'].create(
+            {
+                'sale_order_ids': [(6, 0, self.sale_id.ids)]
+            }
+        )
+
+        invoice_id = adv_payment_inv._create_invoices(adv_payment_inv.sale_order_ids)
+
+        invoice_id.action_post()
+        self.write(
+            {
+                'invoice_id': invoice_id.id,
+                'status': 'approved'
+            }
+        )
 
 

@@ -20,16 +20,20 @@
             <form string="Invoice Request">
                 <header>
                   <field name="status" widget="statusbar" statusbar_visible="pending,approved"/>
+                  <button name="approval_request" type="object" string="Approve Invoice"
+                        data-hotkey="w" 
+                        class="btn btn-primary"
+                        invisible="status != 'pending'" />
                 </header>
 
                 <sheet>
                   <group>
                     <group>
-                      <field name="partner_id" />
-                      <field name="sale_id" />
+                      <field name="partner_id" required="1" readonly="status != 'pending'"/>
+                      <field name="sale_id" required="1" readonly="status != 'pending'"/>
                     </group>
                     <group>
-                      <field name="invoice_id" />
+                      <field name="invoice_id" readonly="1" />
                     </group>
                   </group>
                 </sheet>
